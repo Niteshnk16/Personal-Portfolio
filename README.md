@@ -6,8 +6,8 @@ A responsive personal portfolio website built using **HTML, CSS, and JavaScript*
 
 ## 🚀 Live Demo
 
-🔗 Live Website:
-PASTE_YOUR_AWS_S3_WEBSITE_LINK_HERE
+🔗 Live Website Link:
+https://niteshnk16.github.io/Personal-Portfolio/
 
 ---
 
