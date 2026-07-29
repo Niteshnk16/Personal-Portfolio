@@ -1,0 +1,27 @@
+name: Portfolio Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-to-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # स्टेप 1: कोड चेकआउट करना (नया v4 वर्शन इस्तेमाल किया है)
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # स्टेप 2: AWS क्रेडेंशियल्स कॉन्फ़िगर करना (सुरक्षित v4 वर्शन)
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      # स्टेप 3: फाइल्स को S3 बकेट में सिंक करना
+      - name: Deploy static website to S3 bucket
+        run: |
+          aws s3 sync . s3://personal-portfolio-p --delete 
